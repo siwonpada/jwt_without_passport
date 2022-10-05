@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
       imports: [ConfigModule],
       useFactory: async (configservice: ConfigService) => ({
         secret: configservice.get<string>('JWT_SECRET'),
-        expiresIn: configservice.get<string>('JWT_EXPIRES'),
+        signOptions: { expiresIn: configservice.get<string>('JWT_EXPIRES') },
       }),
     }),
   ],
